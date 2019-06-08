@@ -1,10 +1,13 @@
 package com.ky796950.tictactoe
 
 import android.graphics.Color
+import android.graphics.Color.*
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,9 +17,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        playerNames()
+
         btnreset.setOnClickListener {
             resetBoard()
             resetText()
+            playerNames()
         }
     }
 
@@ -49,17 +55,15 @@ class MainActivity : AppCompatActivity() {
     private fun playGame(cellID: Int, btnSelected: Button) {
 
         if (activePlayer == 1){
-            //text_player1.setTextColor(Color.parseColor("fc0202"))
-            //text_player2.setTextColor(Color.parseColor("050505"))
             btnSelected.text = "X"
+            btnSelected.setBackgroundColor(RED)
             player1.add(cellID)
             activePlayer = 2
             roundCount++
         }
         else{
-            //text_player1.setTextColor(Color.parseColor("050505"))
-            //text_player2.setTextColor(Color.parseColor("fc0202"))
             btnSelected.text = "O"
+            btnSelected.setBackgroundColor(BLUE)
             player2.add(cellID)
             activePlayer = 1
             roundCount++
@@ -173,9 +177,31 @@ class MainActivity : AppCompatActivity() {
         button_21.isEnabled = true
         button_22.isEnabled = true
 
+        button_00.setBackgroundResource(android.R.drawable.btn_default)
+        button_01.setBackgroundResource(android.R.drawable.btn_default)
+        button_02.setBackgroundResource(android.R.drawable.btn_default)
+        button_10.setBackgroundResource(android.R.drawable.btn_default)
+        button_11.setBackgroundResource(android.R.drawable.btn_default)
+        button_12.setBackgroundResource(android.R.drawable.btn_default)
+        button_20.setBackgroundResource(android.R.drawable.btn_default)
+        button_21.setBackgroundResource(android.R.drawable.btn_default)
+        button_22.setBackgroundResource(android.R.drawable.btn_default)
+
         activePlayer = 1
         roundCount = 0
         player1.clear()
         player2.clear()
     }
+
+    private fun playerNames(){
+        val dialogBuilder = AlertDialog.Builder(applicationContext)
+        dialogBuilder.setTitle("Enter Name of Player 1")
+
+        val view = layoutInflater.inflate(R.layout.activity_alert, null)
+        dialogBuilder.setView(view)
+
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
+    }
+
 }

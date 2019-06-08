@@ -49,7 +49,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -58,7 +62,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -67,7 +75,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -83,7 +95,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -92,7 +108,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -101,7 +121,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -117,7 +141,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -126,7 +154,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -135,7 +167,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:textColor="#ffffff"
+=======
+                android:textColor="#fff"
+>>>>>>> ActivePlayerColour
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
