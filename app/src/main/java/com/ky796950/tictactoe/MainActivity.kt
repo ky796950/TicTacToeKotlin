@@ -1,14 +1,16 @@
 package com.ky796950.tictactoe
 
-import android.graphics.Color
-import android.graphics.Color.*
+import android.content.Intent
+import android.graphics.Color.BLUE
+import android.graphics.Color.RED
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_alert.*
+import kotlinx.android.synthetic.main.activity_alert.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         btnreset.setOnClickListener {
             resetBoard()
             resetText()
-            playerNames()
         }
     }
 
@@ -127,13 +128,13 @@ class MainActivity : AppCompatActivity() {
 
         if (winner != -1) {
             if (winner == 1) {
-                Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "X wins!", Toast.LENGTH_LONG).show()
                 player1Points++
                 resetBoard()
                 updatePointsText()
             }
             if (winner == 2) {
-                Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "O wins!", Toast.LENGTH_LONG).show()
                 player2Points++
                 resetBoard()
                 updatePointsText()
@@ -146,14 +147,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun updatePointsText() {
-        text_player1.text = "Player 1 : " + player1Points
-        text_player2.text = "Player 2 : " + player2Points
+        player1pts.text = player1Points.toString()
+        player2pts.text = player2Points.toString()
     }
 
     private fun resetText() {
         player1Points = 0
         player2Points = 0
-        updatePointsText()
+        playerNames()
     }
 
     private fun resetBoard() {
@@ -194,14 +195,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playerNames(){
-        val dialogBuilder = AlertDialog.Builder(applicationContext)
-        dialogBuilder.setTitle("Enter Name of Player 1")
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Enter Player Names")
 
-        val view = layoutInflater.inflate(R.layout.activity_alert, null)
+        val view = layoutInflater.inflate(R.layout.activity_alert, null, false)
         dialogBuilder.setView(view)
 
         val alertDialog = dialogBuilder.create()
         alertDialog.show()
+
+        btnOK.setOnClickListener {
+            val name1 = player1Name.text.toString()
+            val name2 = player2Name.text.toString()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("text_player1", name1)
+            intent.putExtra("text_player2", name2)
+            startActivity(intent)
+        }
     }
 
 }
