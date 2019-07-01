@@ -1,5 +1,6 @@
 package com.ky796950.tictactoe
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color.BLUE
 import android.graphics.Color.RED
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         btnreset.setOnClickListener {
             resetBoard()
-            resetText()
+            playerNames()
+            updatePointsText()
         }
     }
 
@@ -151,12 +153,6 @@ class MainActivity : AppCompatActivity() {
         player2pts.text = player2Points.toString()
     }
 
-    private fun resetText() {
-        player1Points = 0
-        player2Points = 0
-        playerNames()
-    }
-
     private fun resetBoard() {
         button_00.text = null
         button_01.text = null
@@ -195,23 +191,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playerNames(){
+        val dialogView = layoutInflater.inflate(R.layout.activity_alert, null)
         val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle("Enter Player Names")
-
-        val view = layoutInflater.inflate(R.layout.activity_alert, null, false)
-        dialogBuilder.setView(view)
-
-        val alertDialog = dialogBuilder.create()
-        alertDialog.show()
-
-        btnOK.setOnClickListener {
-            val name1 = player1Name.text.toString()
-            val name2 = player2Name.text.toString()
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("text_player1", name1)
-            intent.putExtra("text_player2", name2)
-            startActivity(intent)
-        }
+            .setView(dialogView)
+            .setTitle("Enter player names")
+            .setPositiveButton("OK") {_,_ ->
+                val name1 = dialogView.player1Name.text.toString()
+                val name2 = dialogView.player2Name.text.toString()
+                text_player1.text = name1
+                text_player2.text = name2
+                player1Points = 0
+                player2Points = 0
+            }
+        val dialog = dialogBuilder.create()
+        dialog.show()
     }
-
 }
