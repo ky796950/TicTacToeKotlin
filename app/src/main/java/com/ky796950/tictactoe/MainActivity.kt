@@ -198,8 +198,23 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("OK") {_,_ ->
                 val name1 = dialogView.player1Name.text.toString()
                 val name2 = dialogView.player2Name.text.toString()
-                text_player1.text = name1
-                text_player2.text = name2
+                if (name1 == ""){
+                    if (name2 == ""){
+                        text_player1.text = "Player 1"
+                        text_player2.text = "Player 2"
+                    }else {
+                        text_player1.text = "Player 1"
+                        text_player2.text = name2
+                    }
+                }else {
+                    if (name2 == ""){
+                        text_player1.text = name1
+                        text_player2.text = "Player 2"
+                    }else {
+                        text_player1.text = name1
+                        text_player2.text = name2
+                    }
+                }
                 player1Points = 0
                 player2Points = 0
             }
