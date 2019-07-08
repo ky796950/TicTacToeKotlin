@@ -2,6 +2,7 @@ package com.ky796950.tictactoe
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Color.BLUE
 import android.graphics.Color.RED
 import android.os.Bundle
@@ -23,9 +24,9 @@ class MainActivity : AppCompatActivity() {
         playerNames()
 
         btnreset.setOnClickListener {
-            resetBoard()
+            //resetBoard()
             playerNames()
-            updatePointsText()
+            //updatePointsText()
         }
     }
 
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             R.id.button_22 -> cellID = 9
         }
         playGame(cellID,btnSelected)
+        livePlayer()
     }
 
     private fun playGame(cellID: Int, btnSelected: Button) {
@@ -61,15 +63,15 @@ class MainActivity : AppCompatActivity() {
             btnSelected.text = "X"
             btnSelected.setBackgroundColor(RED)
             player1.add(cellID)
-            activePlayer = 2
             roundCount++
+            activePlayer *= -1
         }
         else{
             btnSelected.text = "O"
             btnSelected.setBackgroundColor(BLUE)
             player2.add(cellID)
-            activePlayer = 1
             roundCount++
+            activePlayer *= -1
         }
         btnSelected.isEnabled = false
 
@@ -184,10 +186,23 @@ class MainActivity : AppCompatActivity() {
         button_21.setBackgroundResource(android.R.drawable.btn_default)
         button_22.setBackgroundResource(android.R.drawable.btn_default)
 
-        activePlayer = 1
         roundCount = 0
         player1.clear()
         player2.clear()
+        livePlayer()
+    }
+
+    private fun livePlayer() {
+        when (activePlayer){
+            1 -> {
+                text_player1.setTextColor(Color.parseColor("#ff0303"))
+                text_player2.setTextColor(Color.parseColor("#050505"))
+            }
+            else -> {
+                text_player1.setTextColor(Color.parseColor("#050505"))
+                text_player2.setTextColor(Color.parseColor("#ff0303"))
+            }
+        }
     }
 
     private fun playerNames(){
@@ -200,23 +215,27 @@ class MainActivity : AppCompatActivity() {
                 val name2 = dialogView.player2Name.text.toString()
                 if (name1 == ""){
                     if (name2 == ""){
-                        text_player1.text = "Player 1"
-                        text_player2.text = "Player 2"
+                        text_player1.text = "X Player 1"
+                        text_player2.text = "O Player 2"
                     }else {
-                        text_player1.text = "Player 1"
-                        text_player2.text = name2
+                        text_player1.text = "X Player 1"
+                        text_player2.text = "O " + name2
                     }
                 }else {
                     if (name2 == ""){
-                        text_player1.text = name1
-                        text_player2.text = "Player 2"
+                        text_player1.text = "X " + name1
+                        text_player2.text = "O Player 2"
                     }else {
-                        text_player1.text = name1
-                        text_player2.text = name2
+                        text_player1.text = "X " + name1
+                        text_player2.text = "O "+ name2
                     }
                 }
                 player1Points = 0
                 player2Points = 0
+                activePlayer = 1
+                resetBoard()
+                updatePointsText()
+                Toast.makeText(this, "X starts", Toast.LENGTH_SHORT).show()
             }
         val dialog = dialogBuilder.create()
         dialog.show()

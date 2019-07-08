@@ -15,7 +15,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Player 1 :"
-                android:textColor="#050505"
+                android:textColor="#ff0303"
                 android:textSize="30sp"/>
         <TextView
                 android:id="@+id/player1pts"
