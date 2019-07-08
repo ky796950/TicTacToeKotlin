@@ -215,19 +215,19 @@ class MainActivity : AppCompatActivity() {
                 val name2 = dialogView.player2Name.text.toString()
                 if (name1 == ""){
                     if (name2 == ""){
-                        text_player1.text = "X Player 1"
-                        text_player2.text = "O Player 2"
+                        text_player1.text = "X: Player 1"
+                        text_player2.text = "O: Player 2"
                     }else {
-                        text_player1.text = "X Player 1"
-                        text_player2.text = "O " + name2
+                        text_player1.text = "X: Player 1"
+                        text_player2.text = "O: " + name2
                     }
                 }else {
                     if (name2 == ""){
-                        text_player1.text = "X " + name1
-                        text_player2.text = "O Player 2"
+                        text_player1.text = "X: " + name1
+                        text_player2.text = "O: Player 2"
                     }else {
-                        text_player1.text = "X " + name1
-                        text_player2.text = "O "+ name2
+                        text_player1.text = "X: " + name1
+                        text_player2.text = "O: "+ name2
                     }
                 }
                 player1Points = 0
