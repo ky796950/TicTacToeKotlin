@@ -1,11 +1,18 @@
 package com.ky796950.tictactoe
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.Color.BLUE
+import android.graphics.Color.RED
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_alert.*
+import kotlinx.android.synthetic.main.activity_alert.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +21,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        playerNames()
+
         btnreset.setOnClickListener {
-            resetBoard()
-            resetText()
+            //resetBoard()
+            playerNames()
+            //updatePointsText()
         }
     }
 
@@ -44,25 +54,24 @@ class MainActivity : AppCompatActivity() {
             R.id.button_22 -> cellID = 9
         }
         playGame(cellID,btnSelected)
+        livePlayer()
     }
 
     private fun playGame(cellID: Int, btnSelected: Button) {
 
         if (activePlayer == 1){
-            //text_player1.setTextColor(Color.parseColor("fc0202"))
-            //text_player2.setTextColor(Color.parseColor("050505"))
             btnSelected.text = "X"
+            btnSelected.setBackgroundColor(RED)
             player1.add(cellID)
-            activePlayer = 2
             roundCount++
+            activePlayer *= -1
         }
         else{
-            //text_player1.setTextColor(Color.parseColor("050505"))
-            //text_player2.setTextColor(Color.parseColor("fc0202"))
             btnSelected.text = "O"
+            btnSelected.setBackgroundColor(BLUE)
             player2.add(cellID)
-            activePlayer = 1
             roundCount++
+            activePlayer *= -1
         }
         btnSelected.isEnabled = false
 
@@ -123,13 +132,13 @@ class MainActivity : AppCompatActivity() {
 
         if (winner != -1) {
             if (winner == 1) {
-                Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "X wins!", Toast.LENGTH_LONG).show()
                 player1Points++
                 resetBoard()
                 updatePointsText()
             }
             if (winner == 2) {
-                Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "O wins!", Toast.LENGTH_LONG).show()
                 player2Points++
                 resetBoard()
                 updatePointsText()
@@ -142,14 +151,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun updatePointsText() {
-        text_player1.text = "Player 1 : " + player1Points
-        text_player2.text = "Player 2 : " + player2Points
-    }
-
-    private fun resetText() {
-        player1Points = 0
-        player2Points = 0
-        updatePointsText()
+        player1pts.text = player1Points.toString()
+        player2pts.text = player2Points.toString()
     }
 
     private fun resetBoard() {
@@ -173,9 +176,68 @@ class MainActivity : AppCompatActivity() {
         button_21.isEnabled = true
         button_22.isEnabled = true
 
-        activePlayer = 1
+        button_00.setBackgroundResource(android.R.drawable.btn_default)
+        button_01.setBackgroundResource(android.R.drawable.btn_default)
+        button_02.setBackgroundResource(android.R.drawable.btn_default)
+        button_10.setBackgroundResource(android.R.drawable.btn_default)
+        button_11.setBackgroundResource(android.R.drawable.btn_default)
+        button_12.setBackgroundResource(android.R.drawable.btn_default)
+        button_20.setBackgroundResource(android.R.drawable.btn_default)
+        button_21.setBackgroundResource(android.R.drawable.btn_default)
+        button_22.setBackgroundResource(android.R.drawable.btn_default)
+
         roundCount = 0
         player1.clear()
         player2.clear()
+        livePlayer()
+    }
+
+    private fun livePlayer() {
+        when (activePlayer){
+            1 -> {
+                text_player1.setTextColor(Color.parseColor("#ff0303"))
+                text_player2.setTextColor(Color.parseColor("#050505"))
+            }
+            else -> {
+                text_player1.setTextColor(Color.parseColor("#050505"))
+                text_player2.setTextColor(Color.parseColor("#ff0303"))
+            }
+        }
+    }
+
+    private fun playerNames(){
+        val dialogView = layoutInflater.inflate(R.layout.activity_alert, null)
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setTitle("Enter player names")
+            .setPositiveButton("OK") {_,_ ->
+                val name1 = dialogView.player1Name.text.toString()
+                val name2 = dialogView.player2Name.text.toString()
+                if (name1 == ""){
+                    if (name2 == ""){
+                        text_player1.text = "X Player 1"
+                        text_player2.text = "O Player 2"
+                    }else {
+                        text_player1.text = "X Player 1"
+                        text_player2.text = "O " + name2
+                    }
+                }else {
+                    if (name2 == ""){
+                        text_player1.text = "X " + name1
+                        text_player2.text = "O Player 2"
+                    }else {
+                        text_player1.text = "X " + name1
+                        text_player2.text = "O "+ name2
+                    }
+                }
+                player1Points = 0
+                player2Points = 0
+                activePlayer = 1
+                resetBoard()
+                updatePointsText()
+                Toast.makeText(this, "X starts", Toast.LENGTH_SHORT).show()
+            }
+        val dialog = dialogBuilder.create()
+        dialog.show()
     }
 }

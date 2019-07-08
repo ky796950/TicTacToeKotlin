@@ -14,7 +14,15 @@
                 android:id="@+id/text_player1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Player 1 : 0"
+                android:text="Player 1 :"
+                android:textColor="#ff0303"
+                android:textSize="30sp"/>
+        <TextView
+                android:id="@+id/player1pts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_centerHorizontal="true"
                 android:textColor="#050505"
                 android:textSize="30sp"/>
 
@@ -23,7 +31,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_player1"
-                android:text="Player 2 : 0"
+                android:text="Player 2 :"
+                android:textColor="#050505"
+                android:textSize="30sp"/>
+        <TextView
+                android:id="@+id/player2pts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_player1"
+                android:text="0"
+                android:layout_centerHorizontal="true"
                 android:textColor="#050505"
                 android:textSize="30sp"/>
 
@@ -49,7 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -58,7 +75,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -67,7 +84,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -83,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -92,7 +109,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -101,7 +118,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -117,7 +134,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -126,7 +143,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
@@ -135,7 +152,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:onClick="squareClick"
                 android:textSize="60sp"/>
 
